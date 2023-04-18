@@ -11,5 +11,10 @@ export class FooterComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  view(): void {
+    const element = document.getElementById('headers');
+    if (element) {
+      element.scrollIntoView();
+    }
+  }
 }

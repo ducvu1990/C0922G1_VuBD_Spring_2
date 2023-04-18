@@ -1,53 +1,82 @@
-
-<!--<div class="row ">-->
-<!--  <div class="col-md-2"></div>-->
-<!--  <div class="col-md-8">-->
-<!--    <nav class="navbar navbar-expand-lg">-->
-<!--      <div class="container-fluid">-->
-<!--        <a class="navbar-brand text-white" href="#"><img src="../../assets/KAMI.png" alt="logo" style="width: 30%"></a>-->
-<!--        <div class="collapse navbar-collapse" id="navbarScroll">-->
-<!--          <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="&#45;&#45;bs-scroll-height: 100px;">-->
-
-<!--            &lt;!&ndash;                        Customer button&ndash;&gt;-->
-<!--            <li class="nav-item">-->
-<!--              <a class="nav-link text-white" routerLink="/customer">Trang chủ</a>-->
-<!--            </li>-->
-<!--            <li class="nav-item">-->
-<!--              <a class="nav-link text-white" routerLink="/customer">Đặt lịch</a>-->
-<!--            </li>-->
-<!--            <li class="nav-item">-->
-<!--              <a class="nav-link text-white" routerLink="/customer">Mua hàng</a>-->
-<!--            </li>-->
-
-<!--            &lt;!&ndash;                        Service button&ndash;&gt;-->
-<!--            <li class="nav-item dropdown">-->
-<!--              <a class="nav-link text-white" routerLink="/facility">Dịch vụ</a>-->
-<!--            </li>-->
-
-<!--            &lt;!&ndash;                        Contrac button&ndash;&gt;-->
-<!--            <li class="nav-item">-->
-<!--              <a class="nav-link text-white" routerLink="/contract">Đăng nhập</a>-->
-<!--            </li>-->
-<!--          </ul>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </nav>-->
-<!--  </div>-->
-<!--  <div class="col-md-2"></div>-->
-<!--</div>-->
-
-<header>
-  <div class="wrapper">
-    <h1 class="logo">Resto</h1>
-    <nav>
-      <h2>Main Navigation</h2>
+<header id="header">
+  <nav>
+    <div class="logo">
+      <a href="index.html"><img
+        src="../../assets/kami_logo_1.png" alt="KAMI Logo" style="width: 20%"/></a>
+    </div>
+    <div class="toggle">
+      <span class="first"></span>
+      <span class="middle"></span>
+      <span class="last"></span>
+    </div>
+    <div class="navigation-bar">
       <ul>
-        <li><a href="#">Our Story</a></li>
-        <li><a href="#">Menu</a></li>
-        <li><a href="#">Reservations</a></li>
-        <li><a href="#">News</a></li>
-        <li><a href="#">Reviews</a></li>
+        <li class="active"><a href="index.html">Home<span class="underline"></span></a></li>
+        <li><a href="#">Reservations<span class="underline"></span></a></li>
+        <li><a href="#">Menu<span class="underline"></span></a></li>
+        <li><a href="#">Blog<span class="underline"></span></a></li>
+        <li><a href="#">Features<span class="underline"></span></a></li>
+        <li><a href="#">Shop<span class="underline"></span></a></li>
+        <li><a href="#">Contact<span class="underline"></span></a></li>
       </ul>
-    </nav>
+    </div>
+  </nav>
+
+
+  <section id="carousel">
+    <div id="demo" class="carousel slide" data-bs-ride="carousel">
+
+      <!-- Indicators/dots -->
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+      </div>
+
+      <!-- The slideshow/carousel -->
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="../../assets/slide.png" class="d-block w-100"/>
+          <div class="carousel-caption">chú thích
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <img src="../../assets/sline_01.png" class="d-block w-100"/>
+          <div class="carousel-caption">chú thích
+          </div>
+        </div>
+        <div class="carousel-item">
+<!--          <img src="../../assets/slide_03.png" class="d-block w-100"/>-->
+          <img src="../../assets/slide_04.png" class="d-block w-100"/>
+          <div class="carousel-caption">chú thích
+          </div>
+        </div>
+      </div>
+
+      <!-- Left and right controls/icons -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
+    </div>
+  </section>
+
+
+  <div class="text">
+    <h2>Welcome</h2>
+    <h1>THE KAMI</h1>
+    <div class="arrow">
+      <span class="left"></span>
+<!--      <i class="fas fa-asterisk"></i>-->
+      <span class="right"></span>
+    </div>
+    <span>Ready To Be Opened</span>
+    <div class="button"><button>Login</button></div>
+<!--      </div>-->
+<!--      <svg class="svg-down" width="192" height="61" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 160.7 61.5" enable-background="new 0 0 160.7 61.5" xml:space="preserve"><path fill="currentColor" d="M80.3,61.5c0,0,22.1-2.7,43.1-5.4s41-5.4,36.6-5.4c-21.7,0-34.1-12.7-44.9-25.4S95.3,0,80.3,0c-15,0-24.1,12.7-34.9,25.4S22.3,50.8,0.6,50.8c-4.3,0-6.5,0,3.5,1.3S36.2,56.1,80.3,61.5z"></path></svg>-->
+<!--      <div class="arrow-down">-->
   </div>
 </header>

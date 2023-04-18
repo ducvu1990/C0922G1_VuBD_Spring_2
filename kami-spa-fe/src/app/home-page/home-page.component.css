@@ -26,7 +26,12 @@ img {
   font-weight: normal;
   margin: 0 0 -35px;
 }
-
+h2 {
+  font-family: 'Herr Von Muellerhoff', cursive;
+  font-size: 100px;
+  font-weight: normal;
+  margin: 0 0 -30px;
+}
 h1, h3 {
   font-family: "Source Code Pro", sans-serif;
   font-size: 47px;
@@ -35,7 +40,7 @@ h1, h3 {
   margin: 0 0 15px;
 }
 p {
-  color: #515151;
+  color: #97afea;
   line-height: 27px;
 }
 .a-CTA {
@@ -724,7 +729,7 @@ header .arrow-down {
   padding: 40px 52px 0 0;
 }
 .about-us .text h3, .reservation .text h3 {
-  color: #000;
+  color: #f6f1f1;
 }
 .about-us .text .fa-asterisk, .reservation .text .fa-asterisk {
   color: #9a9998;
@@ -806,7 +811,7 @@ header .arrow-down {
   padding: 40px 0 0 62px;
 }
 .menu .text h3 {
-  color: #000;;
+  color: #efefef;;
 }
 .menu .text .fa-asterisk {
   color: #9a9998;
@@ -830,12 +835,12 @@ footer .text {
   max-width: 500px;
   margin: auto;
 }
-footer .text h2 {
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: 19px;
-  letter-spacing: 1.9px;
-  margin-bottom: 25px;
-}
+/*footer .text h2 {*/
+/*  font-family: 'Source Sans Pro', sans-serif;*/
+/*  font-size: 19px;*/
+/*  letter-spacing: 1.9px;*/
+/*  margin-bottom: 25px;*/
+/*}*/
 footer .text .fa-asterisk {
   font-size: 12px;
 }

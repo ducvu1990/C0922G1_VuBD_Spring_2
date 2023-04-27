@@ -45,8 +45,8 @@ public class SecurityRestController {
     @Autowired
     private IPersonService iPersonService;
 
-//    @Autowired
-//    private JavaMailSender emailSender;
+    @Autowired
+    private JavaMailSender emailSender;
 
     @PostMapping("/login")
     public ResponseEntity<JwtResponse> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
@@ -64,31 +64,32 @@ public class SecurityRestController {
                         jwt,
                         userDetails.getUsername(),
                         iPersonService.findByEmail(loginRequest.getUsername()).getName(),
+                        iPersonService.findByEmail(loginRequest.getUsername()).getUrl(),
                         roles)
         );
     }
 
 
-//    @GetMapping("/reset-password/{username}")
-//    public ResponseEntity<MessageResponse> resetPassword(@Valid @PathVariable String username) {
-//        Account account = iAccountService.findAccountByEmployeeEmail(username);
-//        if (account != null && !username.isEmpty()) {
-//            SimpleMailMessage message = new SimpleMailMessage();
-//            message.setTo(username);
-//            message.setSubject("Mật khẩu mới.");
-//            String newPassword = String.valueOf(new Random().nextInt(900000) + 100000);
-//            message.setText("Mật khẩu mới của bạn là: " + newPassword);
-//            try {
-//                iAccountService.saveNewPassword(newPassword, account.getId());
-//                emailSender.send(message);
-//                return ResponseEntity.ok(new MessageResponse("Mật khẩu mới đã gửi về mail của bạn."));
-//            } catch (Exception e) {
-//                return ResponseEntity.badRequest()
-//                        .body(new MessageResponse("Gửi mail thất bại."));
-//            }
-//        }
-//        return new ResponseEntity<>(new MessageResponse("Tài khoản không đúng hoặc chưa đăng ký!"),HttpStatus.BAD_REQUEST);
-//    }
+    @GetMapping("/reset-password/{username}")
+    public ResponseEntity<MessageResponse> resetPassword(@Valid @PathVariable String username) {
+        Account account = iAccountService.findAccountByEmployeeEmail(username);
+        if (account != null && !username.isEmpty()) {
+            SimpleMailMessage message = new SimpleMailMessage();
+            message.setTo(username);
+            message.setSubject("Mật khẩu mới.");
+            String newPassword = String.valueOf(new Random().nextInt(900000) + 100000);
+            message.setText("Mật khẩu mới của bạn là: " + newPassword);
+            try {
+                iAccountService.saveNewPassword(newPassword, account.getId());
+                emailSender.send(message);
+                return ResponseEntity.ok(new MessageResponse("Mật khẩu mới đã gửi về mail của bạn."));
+            } catch (Exception e) {
+                return ResponseEntity.badRequest()
+                        .body(new MessageResponse("Gửi mail thất bại."));
+            }
+        }
+        return new ResponseEntity<>(new MessageResponse("Tài khoản không đúng hoặc chưa đăng ký!"),HttpStatus.BAD_REQUEST);
+    }
 
 
     @PostMapping("/change-password")

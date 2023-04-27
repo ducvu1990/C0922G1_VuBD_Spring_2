@@ -29,12 +29,21 @@ public class Person {
     private String phoneNumber;
 
     private boolean isDeleted;
+    private String url;
+
 
     @OneToOne(mappedBy = "person")
     @JsonIgnore
     private Account account;
 
     public Person() {
+    }
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public Long getId() {

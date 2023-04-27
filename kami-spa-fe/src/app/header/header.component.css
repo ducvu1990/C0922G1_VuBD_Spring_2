@@ -568,14 +568,14 @@ header .text .arrow .left:after, header .text .arrow .right:after, header .text 
 /*Start Header*/
 header {
   height: calc(100vh - 22px);
-  background-size: cover;
-  background: url("https://res.cloudinary.com/abdel-rahman-ali/image/upload/v1535988534/header.jpg") fixed bottom;
+  /*background-size: cover;*/
+  /*background: url("https://res.cloudinary.com/abdel-rahman-ali/image/upload/v1535988534/header.jpg") fixed bottom;*/
   padding: 20px 70px;
 }
 header nav {
   position: fixed;
   top: 0;
-  padding: 36px 36px 20px;
+  padding: 20px 36px 20px;
   z-index: 20;
 }
 header nav .toggle {
@@ -710,7 +710,7 @@ header .arrow-down {
   left: 50%;
   transform: translate(-50%, 0);
   z-index: 10;
-  background: url("https://res.cloudinary.com/abdel-rahman-ali/image/upload/v1535988515/arrow-down.png") no-repeat center;
+  background: url("https://dongphuckhanhlinh.com/pic/news/images/hinh-anh-spa-dep%20(247).jpg") no-repeat center;
 }
 /*End Header*/
 
@@ -1111,10 +1111,11 @@ footer .newsletter i {
   display: inline-block;
 }
 .dropdown-content {
+  margin-left: -20px;
   display: none;
   position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
+  background-color: #f1ecec;
+  min-width: 126px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   padding: 10px 0 0 0;
   z-index: 1;

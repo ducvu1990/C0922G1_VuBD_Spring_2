@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   username: string;
   // errorMessage = '';
+  url: string;
   roles: string[] = [];
   returnUrl: string;
 
@@ -36,7 +37,7 @@ export class LoginComponent implements OnInit {
         showConfirmButton: false,
         timer: 1500
       });
-      this.router.navigateByUrl('/');
+      this.router.navigateByUrl('');
     }
     this.view();
     this.loginForm = new FormGroup({
@@ -49,6 +50,7 @@ export class LoginComponent implements OnInit {
       this.loginService.isLoggedIn = true;
       this.roles = this.tokenStorageService.getUser().roles;
       this.username = this.tokenStorageService.getUser().username;
+      this.url = this.tokenStorageService.getUser().url;
     }
   }
 
@@ -81,7 +83,7 @@ export class LoginComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500
         });
-        this.router.navigateByUrl('/homepage');
+        this.router.navigateByUrl('');
         this.shareService.sendClickEvent();
       },
       err => {

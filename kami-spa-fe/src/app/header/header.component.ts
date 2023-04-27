@@ -14,6 +14,7 @@ export class HeaderComponent implements OnInit {
   currentUser: string;
   nameEmployee: string;
   role: string;
+  url: string;
   isLoggedIn = false;
   constructor(private tokenStorageService: TokenStorageService,
               private shareService: ShareService,
@@ -25,6 +26,12 @@ export class HeaderComponent implements OnInit {
       this.loadHeader();
     });
     this.loadHeader();
+  }
+  view(): void {
+    const element = document.getElementById('header');
+    if (element) {
+      element.scrollIntoView();
+    }
   }
   async logOut() {
     this.tokenStorageService.signOut();
@@ -43,6 +50,8 @@ export class HeaderComponent implements OnInit {
       this.currentUser = this.tokenStorageService.getUser().username;
       this.role = this.tokenStorageService.getUser().roles[0];
       this.username = this.tokenStorageService.getUser().username;
+      this.url = this.tokenStorageService.getUser().url;
+      console.log(this.url);
     }
     this.isLoggedIn = this.username != null;
     this.getUsernameAccount();

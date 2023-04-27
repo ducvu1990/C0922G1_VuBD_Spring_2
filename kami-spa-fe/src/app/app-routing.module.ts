@@ -11,7 +11,7 @@ const routes: Routes = [
   //   canActivate: [UserGuard]
   // },
   {
-    path: 'homepage', component: HomePageComponent
+    path: '', component: HomePageComponent
   },
   {
     path: 'security',

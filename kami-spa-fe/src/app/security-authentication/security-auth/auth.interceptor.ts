@@ -10,8 +10,8 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { TokenStorageService } from '../service/token-storage.service';
-import Swal from "sweetalert2";
-import {Router} from "@angular/router";
+import Swal from 'sweetalert2';
+import {Router} from '@angular/router';
 
 export const InterceptorSkipHeader = 'X-Skip-Interceptor';
 
@@ -35,25 +35,24 @@ export class AuthInterceptor implements HttpInterceptor {
     }
 
     return next.handle(authRequest)
-    //   .pipe(
-    //   catchError((error: HttpErrorResponse) => {
-    //     debugger
-    //     if (error.status === 401 || error.status === 403) {
-    //       Swal.fire({
-    //         text: 'Bạn không được phép truy cập đường dẫn này!',
-    //         icon: 'error',
-    //         confirmButtonText: 'OK'
-    //       })
-    //       this.router.navigateByUrl('error')
-    //     } else {
-    //       Swal.fire({
-    //         text: 'Lỗi kết nối, xin vui lòng thử lại!',
-    //         icon: 'error',
-    //         confirmButtonText: 'OK'
-    //       })
-    //     }
-    //     return throwError(error);
-    //   })
-    // );
+      .pipe(
+      catchError((error: HttpErrorResponse) => {
+        if (error.status === 401 || error.status === 403) {
+          Swal.fire({
+            text: 'Bạn không được phép truy cập đường dẫn này!',
+            icon: 'error',
+            confirmButtonText: 'OK'
+          });
+          this.router.navigateByUrl('error');
+        } else {
+          Swal.fire({
+            text: 'Lỗi kết nối, xin vui lòng thử lại!',
+            icon: 'error',
+            confirmButtonText: 'OK'
+          });
+        }
+        return throwError(error);
+      })
+    );
   }
 }

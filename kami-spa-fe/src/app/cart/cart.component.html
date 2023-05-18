@@ -1,0 +1,63 @@
+<header id="site-header">
+  <div class="container">
+    <h1 style="color: white;">Shopping cart</h1>
+  </div>
+</header>
+
+<div class="container">
+  <h3 *ngIf="!carts" style="color: white">Giỏ hàng của bạn chưa có gì</h3>
+  <section id="cart" *ngFor="let cart of carts">
+    <article class="product">
+      <header>
+        <a class="remove" (click)="delete(cart.id)">
+          <img src="{{ getImageUrl(cart.product.id) }}" alt="">
+
+          <h3>Remove product</h3>
+        </a>
+      </header>
+
+      <div class="content">
+
+        <h1>{{cart.product.name}}</h1>
+
+        {{cart.product.description}}<br>
+        <p>Số lượng có thể mua là: {{cart.product.productQuantity}}</p>
+
+      </div>
+
+      <footer class="content">
+        <span class="qt-minus" (click)="reduce(quantityset.value, cart.product.id, cart.id)">-</span>
+        <span class="qt"><input #quantityset type="number" style="width: 45px; height: 38px; border: none" [value]="cart.orderedQuantity"
+        (change)="setQuantity(quantityset.value, cart.product.id, cart.id)"></span>
+        <span class="qt-plus" (click)="increase(quantityset.value, cart.product.id, cart.id)">+</span>
+
+        <h2 class="full-price">
+          {{ productTotal(cart.product.id) }}$
+        </h2>
+
+        <h2 class="price">
+          {{cart.product.price}}$
+        </h2>
+      </footer>
+    </article>
+  </section>
+
+</div>
+
+<footer id="site-footer">
+  <div class="container clearfix">
+
+    <div class="left">
+      <h2 class="subtotal" style="color: white;">Subtotal: <span>{{total}}</span>$</h2>
+      <h3 class="tax" style="color: white;">Quantity: <span>{{quantity}}</span></h3>
+      <h3 class="shipping" style="color: white;">Shipping: <span>0.00</span>$</h3>
+    </div>
+
+    <div class="right">
+      <h1 class="total">Total: <span>{{total}}</span>$</h1>
+<!--      <a class="btn" (click)="pay()">Checkout</a>-->
+      <div id="payments"></div>
+    </div>
+
+  </div>
+</footer>

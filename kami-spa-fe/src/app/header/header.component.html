@@ -1,41 +1,91 @@
-<header id="header">
+<header id="home">
   <nav>
     <div class="logo">
       <a routerLink=""><img
         src="../../assets/kami_logo_1.png" alt="KAMI Logo" style="width: 20%"/></a>
     </div>
     <div class="toggle" style="width: 52%">
-      <span class="first"></span>
-      <span class="middle"></span>
-      <span class="last"></span>
+      <div class="dropdown" style="float: left">
+        <button class="btn btn-secondary dropdown-toggle" style="background-color: rgba(0,0,0,0)" type="button"
+                id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          <span class="first"></span>
+          <span class="middle"></span>
+          <span class="last"></span>
+        </button>
+        <ul class="dropdown-menu" style="background-color: rgba(0,0,0,0.47);">
+          <li [hidden]="!isLoggedIn"><a routerLink="/">Home<span class="underline"></span></a></li>
+          <li [hidden]="!isLoggedIn  || role!=='ROLE_ADMIN'"><a routerLink="/detail">Nhân viên<span
+            class="underline"></span></a></li>
+          <li [hidden]="!isLoggedIn"><a href="#">Menu<span class="underline"></span></a></li>
+          <li [hidden]="!isLoggedIn"><a href="#">Blog<span class="underline"></span></a></li>
+          <li [hidden]="!isLoggedIn"><a href="#">Features<span class="underline"></span></a></li>
+          <li [hidden]="!isLoggedIn"><a href="#">Shop<span class="underline"></span></a></li>
+          <li [hidden]="!isLoggedIn"><a href="#">Contact<span class="underline"></span></a></li>
+          <li [hidden]="!isLoggedIn">
+            <div class="dropdownUser">
+              <div class="n-item d-flex align-items-center" style="width: 9rem">
+                <img src="{{url}}" style="border-radius: 50%; height: 45px;width: 45px; border: #f8f80a 2px solid">
+                <span style="color: #f1d766; width: 6rem"><b style="overflow: hidden">{{name}}</b></span></div>
+              <div class="dropdown-content p-0" style="border-radius: 6%;">
+                <div class=" getstarted" routerLink="/security/change-password">
+                  <button class="btn">Đổi mật khẩu</button>
+                </div>
+                <div class=" getstarted" (click)="logOut()">
+                  <button class="btn">Đăng xuất</button>
+                </div>
+              </div>
+            </div>
+
+          </li>
+          <li [hidden]="isLoggedIn">
+            <a routerLink="/security/login"><img src="../../assets/login-icon.png"
+                                                 style="width: 50px; float: right;margin-right: -19px"/></a>
+
+          </li>
+        </ul>
+      </div>
     </div>
-    <div class="navigation-bar" style="width: 60%">
-<!--      class="active"-->
+    <div class="navigation-bar" style="width: 40%">
+      <!--      class="active"-->
       <ul>
-        <li [hidden]="!isLoggedIn"><a href="index.html">Home<span class="underline"></span></a></li>
-        <li [hidden]="!isLoggedIn  || role!=='ROLE_ADMIN'"><a href="#">Nhân viên<span class="underline"></span></a></li>
-        <li [hidden]="!isLoggedIn"><a href="#">Menu<span class="underline"></span></a></li>
-        <li [hidden]="!isLoggedIn"><a href="#">Blog<span class="underline"></span></a></li>
-        <li [hidden]="!isLoggedIn"><a href="#">Features<span class="underline"></span></a></li>
-        <li [hidden]="!isLoggedIn"><a href="#">Shop<span class="underline"></span></a></li>
-        <li [hidden]="!isLoggedIn"><a href="#">Contact<span class="underline"></span></a></li>
+        <li [hidden]="!isLoggedIn  || role!=='ROLE_ADMIN'"><a routerLink="/detail">Nhân viên<span
+          class="underline"></span></a></li>
+        <li><a (click)="home()">Trang chủ<span class="underline"></span></a></li>
+        <li><a (click)="blog()">Blog<span class="underline"></span></a></li>
+        <li><a routerLink="/" (click)="shop()">Shop<span class="underline"></span></a></li>
+
+        <li>
+<!--          routerLink="/cart"-->
+          <a class="fb-notification" (click)="routers()">
+            <i class='bx bx-cart-alt' style="font-size: 25px"></i>
+            <span class="count" *ngIf="quantityOfCart">{{quantityOfCart}}</span>
+          </a>
+
+
+          <!--          <a href="#"><i class='bx bx-cart-alt' style="font-size: 25px"></i><span class="underline">ưdwa</span></a>-->
+        </li>
         <li [hidden]="!isLoggedIn">
           <div class="dropdownUser">
             <div class="n-item d-flex align-items-center" style="width: 9rem">
               <img src="{{url}}" style="border-radius: 50%; height: 45px;width: 45px; border: #f8f80a 2px solid">
-              <span style="color: #f8f8f8;"><b style="overflow: hidden">{{nameEmployee}}</b></span></div>
-            <div class="dropdown-content p-0">
-              <div class=" getstarted" routerLink="/security/change-password"><button class="btn">Đổi mật khẩu</button></div>
-              <div class=" getstarted" (click)="logOut()"><button class="btn">Đăng xuất</button></div>
+              <span style="color: #f1d766;"><b style="overflow: hidden">{{name}}</b></span></div>
+            <div class="dropdown-content p-0" style="border-radius: 6%;">
+              <div class=" getstarted" routerLink="/security/change-password">
+                <button class="btn">Đổi mật khẩu</button>
+              </div>
+              <div class=" getstarted" (click)="logOut()">
+                <button class="btn">Đăng xuất</button>
+              </div>
             </div>
           </div>
 
         </li>
         <li [hidden]="isLoggedIn">
-          <a routerLink="/security/login"><img src="../../assets/login-icon.png" style="width: 50px; float: right;margin-right: -19px"/></a>
+          <a routerLink="/security/login" style="float: right"><i class='bx bx-log-in'
+                                                                  style="font-size: 35px; color: #f8f80a"></i> </a>
 
         </li>
-<!--        <li><a href="#" (click)="logOut()">Đăng xuất<span class="underline"></span></a></li>-->
+        <!--        <li><a href="#" (click)="logOut()">Đăng xuất<span class="underline"></span></a></li>-->
       </ul>
     </div>
   </nav>
@@ -64,7 +114,7 @@
           </div>
         </div>
         <div class="carousel-item">
-<!--          <img src="../../assets/slide_03.png" class="d-block w-100"/>-->
+          <!--          <img src="../../assets/slide_03.png" class="d-block w-100"/>-->
           <img src="../../assets/slide_04.png" class="d-block w-100"/>
           <div class="carousel-caption">chú thích
           </div>
@@ -87,13 +137,13 @@
     <h1>THE KAMI</h1>
     <div class="arrow">
       <span class="left"></span>
-<!--      <i class="fas fa-asterisk"></i>-->
+      <!--      <i class="fas fa-asterisk"></i>-->
       <span class="right"></span>
     </div>
     <span></span>
     <div class="button"></div>
-<!--      </div>-->
-<!--      <svg class="svg-down" width="192" height="61" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 160.7 61.5" enable-background="new 0 0 160.7 61.5" xml:space="preserve"><path fill="currentColor" d="M80.3,61.5c0,0,22.1-2.7,43.1-5.4s41-5.4,36.6-5.4c-21.7,0-34.1-12.7-44.9-25.4S95.3,0,80.3,0c-15,0-24.1,12.7-34.9,25.4S22.3,50.8,0.6,50.8c-4.3,0-6.5,0,3.5,1.3S36.2,56.1,80.3,61.5z"></path></svg>-->
-<!--      <div class="arrow-down">-->
+    <!--      </div>-->
+    <!--      <svg class="svg-down" width="192" height="61" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 160.7 61.5" enable-background="new 0 0 160.7 61.5" xml:space="preserve"><path fill="currentColor" d="M80.3,61.5c0,0,22.1-2.7,43.1-5.4s41-5.4,36.6-5.4c-21.7,0-34.1-12.7-44.9-25.4S95.3,0,80.3,0c-15,0-24.1,12.7-34.9,25.4S22.3,50.8,0.6,50.8c-4.3,0-6.5,0,3.5,1.3S36.2,56.1,80.3,61.5z"></path></svg>-->
+    <!--      <div class="arrow-down">-->
   </div>
 </header>

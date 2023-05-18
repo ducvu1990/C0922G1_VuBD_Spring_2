@@ -2,16 +2,19 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {UserGuard} from './security-authentication/security-auth/user.guard';
 import {HomePageComponent} from './home-page/home-page.component';
+import {DetailComponent} from './detail/detail.component';
+import {CartComponent} from './cart/cart.component';
 
 
 const routes: Routes = [
-  // {
-  //   path: 'homepage',
-  //   loadChildren: () => import('./home-page/home-page.component').then(module => module.HomePageComponent),
-  //   canActivate: [UserGuard]
-  // },
   {
     path: '', component: HomePageComponent
+  },
+  {
+    path: 'detail/:id', component: DetailComponent
+  },
+  {
+    path: 'cart', component: CartComponent
   },
   {
     path: 'security',

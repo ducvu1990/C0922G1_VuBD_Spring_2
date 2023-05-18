@@ -10,6 +10,7 @@ public class OrderDetail {
 
     @Column(nullable = false)
     private int orderedQuantity;
+    private boolean isPay;
 
     @ManyToOne
     @JoinColumn(name = "product_id",referencedColumnName = "id")
@@ -20,6 +21,14 @@ public class OrderDetail {
     private Orders orders;
 
     public OrderDetail() {
+    }
+
+    public boolean isPay() {
+        return isPay;
+    }
+
+    public void setPay(boolean pay) {
+        isPay = pay;
     }
 
     public Long getId() {

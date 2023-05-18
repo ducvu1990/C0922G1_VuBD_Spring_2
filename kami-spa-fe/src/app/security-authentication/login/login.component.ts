@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.loginService.isLoggedIn) {
+    if (this.tokenStorageService.getToken() !== null) {
       Swal.fire({
         text: 'Bạn đã đăng nhập.',
         icon: 'warning',

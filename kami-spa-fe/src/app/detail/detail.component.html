@@ -1,97 +1,84 @@
-<div class="container">
-  <div class="card">
-    <div class="img-box">
-      <img src="https://images.pexels.com/photos/1699030/pexels-photo-1699030.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Moon" title="Moon">
+<main>
+  <div class="container" id="detail">
+    <div class="grid second-nav">
+      <div class="column-xs-12">
+      </div>
     </div>
-
-    <div class="details">
-      <h2>
-        Lorem Ispum Dolar
-      </h2>
-
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur natus perspiciatis laudantium quidem autem porro molestiae repellendus est quisquam dolore blanditiis numquam, corrupti neque soluta dolores! Voluptate doloremque commodi officia.
-      </p>
+    <div class="grid product">
+      <div class="column-xs-12 column-md-7">
+        <div class="product-gallery">
+          <div class="product-image">
+            <img class="active" src="{{getImageUrl(id)}}">
+          </div>
+        </div>
+      </div>
+      <div class="column-xs-12 column-md-5">
+        <h1>{{product.name}}</h1>
+        <h2>{{product.price}}$</h2>
+        <div class="description">
+          <h3>Số lượng còn lại: {{product.productQuantity}}</h3>
+          <p>{{product.description}}</p>
+        </div>
+        <button type="button" class="add-to-cart" (click)="addCart(product.id)">Add To Cart</button>
+      </div>
     </div>
-  </div>
+    <div class="grid related-products" id="list">
+      <div class="column-xs-12">
+        <h3>You may also like</h3>
+      </div>
 
-  <div class="card">
-    <div class="img-box">
-      <img src="https://images.pexels.com/photos/1008000/pexels-photo-1008000.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Landscape" title="Landscape">
+
+      <div class="column-xs-12 column-md-4" style="border: 1px yellow solid; margin: 1rem; border-radius: 5%; height: 80%" *ngFor="let productes of products ">
+        <img style="width: 100%; height:50%;" src="{{getImageUrl(productes.id)}}">
+        <h4>{{productes.name}}</h4>
+        <p class="price">{{productes.price}}$</p>
+        <div>
+<!--          routerLink="/detail/{{product.id}}"-->
+          <button type="button" class="btn" style=" margin-left: 43px; margin-top: 29px; color: #ffffff" (click)="routers(productes.id)">
+            <i class='bx bx-message-square-detail' style="font-size: 25px"></i>
+          </button>
+          <a class="btn fb-notification" style=" margin-left: 43px; margin-top: 29px; color: #ffffff" (click)="addCart(productes.id)">
+            <i class='bx bx-cart-download' style="font-size: 25px"></i>
+            <span class="count" *ngIf="productQuantity(productes.id) != 0" >{{ productQuantity(productes.id) }}</span>
+          </a>
+          <button type="button" class="btn" style=" margin-left: 43px; margin-top: 29px; color: #ffffff">
+            <i class='bx bx-dollar-circle' style="font-size: 25px"></i>
+          </button>
+        </div>
+      </div>
+
+
+
     </div>
+    <div class="row" style="margin-top: 10px">
+      <div class="col-md-2">
+      </div>
+      <div class="col-md-8 d-flex justify-content-center">
 
-    <div class="details">
-      <h2>
-        Lorem Ispum Dolar
-      </h2>
 
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur natus perspiciatis laudantium quidem autem porro molestiae repellendus est quisquam dolore blanditiis numquam, corrupti neque soluta dolores! Voluptate doloremque commodi officia.
-      </p>
-    </div>
-  </div>
+        <button [ngClass]="{disabled: page === 0 }"
+                (click)="previousPage()" class="page-link btn outline"
+                style="background-color: rgba(255,140,0,0); width: 2rem"
+                aria-label="Previous">
+          <span aria-hidden="true" style="color:#ffffff;"><<</span>
+        </button>
 
-  <div class="card">
-    <div class="img-box">
-      <img src="https://images.pexels.com/photos/1054218/pexels-photo-1054218.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Mountain" title="Mountain">
-    </div>
 
-    <div class="details">
-      <h2>
-        Lorem Ispum Dolar
-      </h2>
+        <button style="color: #ffffff; width: 2rem; margin: 5px" class="page-link page btn-lg outline"
+                *ngFor="let pageNumber of pageNumbersToDisplay" [ngClass]="{currentpage: page+1 == pageNumber}"
+                (click)="goToPage(pageNumber)">
+          {{ pageNumber === '...' ? pageNumber : pageNumber }}
+        </button>
 
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur natus perspiciatis laudantium quidem autem porro molestiae repellendus est quisquam dolore blanditiis numquam, corrupti neque soluta dolores! Voluptate doloremque commodi officia.
-      </p>
-    </div>
-  </div>
 
-  <div class="card">
-    <div class="img-box">
-      <img src="https://images.pexels.com/photos/1381242/pexels-photo-1381242.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Camera" title="Camera">
-    </div>
+        <button [ngClass]="{disabled: page === pageCount - 1 }" style="background-color: rgba(255,140,0,0); width: 2rem"
+                class="page-link btn outline" (click)="nextPage()" aria-label="Next">
+          <span aria-hidden="true" style="color: #ffffff">>></span>
+        </button>
 
-    <div class="details">
-      <h2>
-        Lorem Ispum Dolar
-      </h2>
 
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur natus perspiciatis laudantium quidem autem porro molestiae repellendus est quisquam dolore blanditiis numquam, corrupti neque soluta dolores! Voluptate doloremque commodi officia.
-      </p>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="img-box">
-      <img src="https://images.pexels.com/photos/1054198/pexels-photo-1054198.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Landscape" title="Landscape">
-    </div>
-
-    <div class="details">
-      <h2>
-        Lorem Ispum Dolar
-      </h2>
-
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur natus perspiciatis laudantium quidem autem porro molestiae repellendus est quisquam dolore blanditiis numquam, corrupti neque soluta dolores! Voluptate doloremque commodi officia.
-      </p>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="img-box">
-      <img src="https://images.pexels.com/photos/724644/pexels-photo-724644.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Pictures" title="Pictures">
-    </div>
-
-    <div class="details">
-      <h2>
-        Lorem Ispum Dolar
-      </h2>
-
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur natus perspiciatis laudantium quidem autem porro molestiae repellendus est quisquam dolore blanditiis numquam, corrupti neque soluta dolores! Voluptate doloremque commodi officia.
-      </p>
+      </div>
+      <div class="col-md-2"></div>
     </div>
   </div>
-</div>
+</main>

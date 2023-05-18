@@ -3,6 +3,7 @@ package com.example.kami_spa_be.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -14,9 +15,10 @@ public class Orders {
     private String orderCode;
 
     @Column(columnDefinition = "date", nullable = false)
-    private String order_date;
+    private Date order_date;
 
     private boolean isPaid;
+    private double total;
 
     private Long employeeId;
     private String shipping_address;
@@ -30,6 +32,14 @@ public class Orders {
     private Set<OrderDetail> orderDetailSet;
 
     public Orders() {
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
     }
 
     public Long getId() {
@@ -48,11 +58,11 @@ public class Orders {
         this.orderCode = orderCode;
     }
 
-    public String getOrder_date() {
+    public Date getOrder_date() {
         return order_date;
     }
 
-    public void setOrder_date(String order_date) {
+    public void setOrder_date(Date order_date) {
         this.order_date = order_date;
     }
 
